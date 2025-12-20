@@ -1,8 +1,11 @@
-import mysql from "mysql2"
+import { Client } from 'pg'
 
-const pool = mysql.createPool({
+const client = new Client({
     host: "localhost",
-    user: "root",
-    password: '',
-    database: 'db'
-}).promise()
+    user: "postgres",
+    port: "5432",
+    password: "admin",
+    database: "UserManagementSystem"
+})
+
+client.connect().then(() => console.log("Database connected"))
