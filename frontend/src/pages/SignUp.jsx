@@ -9,7 +9,7 @@ import { useFormState } from '../hooks/useFormState'
 import { RegisterAPI } from "../services/api"
 
 function SignUp() {
-    const { values, handleChange } = useFormState({
+    const { values, handleChange, reset } = useFormState({
             email: '',
             password: '',
             username: ''
@@ -30,12 +30,9 @@ function SignUp() {
         }
 
         try {
-            setError("")
-            
             const data = await RegisterAPI(values.username, values.email, values.password)
-            
-            setSuccess("Registration successful!")
-            setValues({ username: "", email: "", password: "", confirmPassword: "" })
+            setError("")
+            reset()
         } catch (error) {
             if (error.response && error.response.data && error.response.data.message) {
                 setError(error.response.data.message)
