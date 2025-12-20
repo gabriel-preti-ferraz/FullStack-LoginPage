@@ -6,16 +6,18 @@ import TextField from "../components/TextField"
 import Button from "../components/Button"
 import PasswordField from "../components/PasswordField"
 import { useFormState } from '../hooks/useFormState'
+import { Register } from "../services/api"
 
 function SignUp() {
     const { values, handleChange } = useFormState({
             email: '',
             password: '',
+            username: ''
     })
     const [checked, setChecked] = useState(false)
     const [error, setError] = useState('')
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
 
         if (values.password != values.confirmPassword) {
@@ -25,6 +27,21 @@ function SignUp() {
         if (!checked) {
             setError("You must accept the Terms of Use and Privacy Policy.")
             return
+        }
+
+        try {
+            setError("")
+            
+            const data = await Register(values.username, values.email, values.password)
+            
+            setSuccess("Registration successful!")
+            setValues({ username: "", email: "", password: "", confirmPassword: "" })
+        } catch (error) {
+            if (error.response && error.response.data && error.response.data.message) {
+                setError(error.response.data.message)
+            } else {
+                setError("An unexpected error ocurred. Please try again.")
+            }
         }
     }
 
@@ -48,11 +65,11 @@ function SignUp() {
                 />
 
                 <TextField
-                    name="user"
+                    name="username"
                     type="text"
                     placeholder="Username"
                     required
-                    value={values.user}
+                    value={values.username}
                     onChange={handleChange}
                 />                
 
