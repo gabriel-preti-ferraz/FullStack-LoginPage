@@ -5,6 +5,7 @@ import { useState } from "react"
 import TextField from "../components/TextField"
 import Button from "../components/Button"
 import Divider from "../components/Divider"
+import Wrapper from "../components/Wrapper"
 
 function Login() {
     const [email, setEmail] = useState('')
@@ -12,40 +13,44 @@ function Login() {
     const [visible, setVisible] = useState('')
 
     return (
-        <div className='login-wrapper'>
-            <div className='login-card'>
+        <Wrapper 
+            headerContent={<>
                 <h1>Log in to <br />your account</h1>
                 <h5>Don't have an account? <a href="/signup">Sign up</a></h5>
-                <form action="">
-                    <TextField
-                        name="email"
-                        type="email"
-                        placeholder="E-mail"
-                        required
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
+            </>}
 
-                    <TextField
-                        name="password"
-                        placeholder="Password"
-                        required
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        type={visible ? "text" : "password"}
-                    >
-                        <div className='eye' onClick={() => setVisible(!visible)}>
-                            {visible ? <BsEye /> : <BsEyeSlash />}
-                        </div>
-                    </TextField>
+            formContent={<>
+                <TextField
+                    name="email"
+                    type="email"
+                    placeholder="E-mail"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
 
-                    <Button
-                        type="submit"
-                        icon="right"
-                        span={<BsArrowRightShort />}
-                        text="Log in"
-                    />
-                </form>
+                <TextField
+                    name="password"
+                    placeholder="Password"
+                    required
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    type={visible ? "text" : "password"}
+                >
+                    <div className='eye' onClick={() => setVisible(!visible)}>
+                        {visible ? <BsEye /> : <BsEyeSlash />}
+                    </div>
+                </TextField>
+
+                <Button
+                    type="submit"
+                    icon="right"
+                    span={<BsArrowRightShort />}
+                    text="Log in"
+                />
+            </>}
+
+            footContent={<>
                 <h5 className='forgot-h5'><a href="/pass-recovery">Forgot password?</a></h5>
                 <Divider text="or" />
                 <Button
@@ -54,8 +59,8 @@ function Login() {
                     span={<FcGoogle />}
                     text="Sign In with google"
                 />
-            </div>
-        </div>
+            </>}
+        />
     )
 }
 

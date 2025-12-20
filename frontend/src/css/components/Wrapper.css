@@ -1,0 +1,55 @@
+.wrapper {
+    width: 100vw;
+    height: 100vh;
+    background: var(--gradient);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    background-color: #fff;
+    box-shadow: 0 0 10px var(--shadow);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 40px;
+    border-radius: 20px;
+    width: 25%;
+}
+
+.card > h1 {
+    color: var(--color1);
+    font-size: 44px;
+    text-align: center;
+    margin: 0;
+    font-weight: 600;
+}
+
+.card > h5 {
+    color: var(--color1);
+    font-size: 18px;
+    font-weight: 200;
+}
+
+.card > h5 > a {
+    font-weight: 400;
+}
+
+.card > form {
+    width: 100%;
+    margin: 15px;
+}
+
+@media only screen and (max-width: 950px) {
+    .card {
+        width: 85%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .card {
+        width: 90%;
+    }
+}

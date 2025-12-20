@@ -14,13 +14,13 @@
 }
 
 body {
-  margin: 0;
-  font-family: 'Mazzard', sans-serif;
-  overflow-x: hidden;
+    margin: 0;
+    font-family: 'Mazzard', sans-serif;
+    overflow-x: hidden;
 }
 
 body * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 h5 {
