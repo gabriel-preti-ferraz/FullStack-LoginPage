@@ -38,38 +38,6 @@
     margin: 15px;
 }
 
-form > button {
-    width: 100%;
-    padding: 10px 25px;
-    box-shadow: 0px 12.5px 15px var(--shadow);
-    border: none;
-    border-radius: 6px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 550;
-    font-size: 16pt;
-    color: #fff;
-    outline: none;
-    cursor: pointer;
-    transition: 0.7s;
-    background-color: var(--color1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    margin-top: 15px;
-    margin-bottom: 12px;
-}
-
-form > button > span {
-    color: #fff;
-    display: flex;
-    align-items: center;
-    position: absolute;
-    right: 5%;
-    font-size: 25pt;
-}
-
 h5 > a {
     font-weight: 400;
 }
@@ -97,32 +65,9 @@ h5 > a {
 }
 
 .google {
-    width: 100%;
-    padding: 10px 25px;
-    box-shadow: 0px 5px 15px var(--shadow);
-    border: none;
-    border-radius: 6px;
-    letter-spacing: 1px;
-    font-weight: 500;
-    font-size: 16pt;
+    text-transform: capitalize;
     color: var(--color1);
-    outline: none;
-    cursor: pointer;
-    transition: 0.7s;
     background-color: var(--background1);
-    margin-top: 7px;
-    margin-bottom: 10px;
-
-    display: grid;
-    grid-template-columns: auto 1fr;
-    align-items: center;
-    column-gap: 12px;
-}
-
-.google > span {
-    display: flex;
-    align-items: center;
-    font-size: 27pt;
 }
 
 @media only screen and (max-width: 950px) {
