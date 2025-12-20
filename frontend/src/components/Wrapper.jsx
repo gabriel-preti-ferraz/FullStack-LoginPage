@@ -1,11 +1,11 @@
 import "../css/components/Wrapper.css"
 
-function Wrapper({ headerContent, formContent, footContent, ...props }) {
+function Wrapper({ headerContent, formContent, footContent, formProps }) {
     return (
         <div className="wrapper">
             <div className="card">
                 {headerContent}
-                <form {...props}>
+                <form {...formProps}>
                     {formContent}
                 </form>
                 {footContent}
