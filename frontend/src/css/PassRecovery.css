@@ -1,0 +1,121 @@
+.recovery-wrapper {
+    width: 100vw;
+    height: 100vh;
+    background: var(--gradient);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.recovery-card {
+    background-color: #fff;
+    box-shadow: 0 0 10px var(--shadow);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 40px;
+    border-radius: 20px;
+    width: 25%;
+}
+
+.recovery-card > h1 {
+    color: var(--color1);
+    font-size: 44px;
+    text-align: center;
+    margin: 0;
+    font-weight: 600;
+}
+
+.recovery-card > form {
+    width: 100%;
+    margin: 15px;
+}
+
+.text-field {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 15px 0px;
+}
+
+.text-field > label {
+    margin-bottom: 10px;
+}
+
+.text-field > input {
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0px 5px 15px var(--shadow);
+    background-color: var(--background1);
+    margin-bottom: 10px;
+}
+
+.text-field > input::placeholder {
+    font-weight: 550;
+    font-size: 12.5pt;
+}
+
+form > button {
+    width: 100%;
+    padding: 10px 25px;
+    box-shadow: 0px 12.5px 15px var(--shadow);
+    border: none;
+    border-radius: 6px;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    font-weight: 550;
+    font-size: 16pt;
+    color: #fff;
+    outline: none;
+    cursor: pointer;
+    transition: 0.7s;
+    background-color: var(--color1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-top: 15px;
+    margin-bottom: 12px;
+}
+
+.divider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    color: var(--color2);
+    font-size: 12pt;
+    margin: 5px;
+}
+
+.divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    height: 1.2px;
+    background-color: #d1d5db;
+}
+
+.divider span {
+    margin: 0 12px;
+    white-space: nowrap;
+}
+
+#return {
+    margin-bottom: 0;
+}
+
+@media only screen and (max-width: 950px) {
+    .recovery-card {
+        width: 85%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .recovery-card {
+        width: 90%;
+    }
+}
