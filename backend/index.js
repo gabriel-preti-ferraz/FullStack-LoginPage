@@ -71,3 +71,60 @@ function verifyToken(req, res, next) {
 app.get("/userinfo", verifyToken, (req, res) => {
     res.json({user: req.user})
 })
+
+function verifyAdmin(req, res, next) {
+    const token = req.headers.authorization && req.headers.authorization.splt(" ")[1]
+    if (!token) return res.status(401).json({message: "Missing Token"})
+    
+    try {
+        const decoded = jwt.verify(token, process.env.SECRET_KEY)
+        if (decoded.role !== "admin") {
+            return res.status(403).json({message: "Access denied"})
+        }
+        req.user = decoded
+        next()
+    } catch (error) {
+        console.error("Token verification failed:", error.message)
+        res.status(401).json({message: "Invalid Token"})
+    }
+}
+
+app.get("/users", async (req, res, verifyAdmin) => {
+    try {
+        const result = await client.query("SELECT id, name, email, role FROM users")
+        res.json(result.rows)
+    } catch (err) {
+        res.status(500).json({error: err.message})
+    }
+})
+
+app.get("/users/:id", async (req, res, verifyAdmin) => {
+    try {
+        const {id} = req.params
+        const result = await client.query("SELECT id, name, email, role FROM users where id =$1", [id])
+        res.json(result.rows[0])
+    } catch (err) {
+        res.status(500).json({error: err.message})
+    }
+})
+
+app.put("/users/:id", async (req, res, verifyAdmin) => {
+    try {
+        const {id} = req.params
+        const {name, email, role} = req.body
+        const result = await client.query("UPDATE users SET name = $1, email = $2, role = $3 WHERE id = $4 RETURNING id, name, email, role", [name, email, role, id])
+        res.json(result.rows[0])
+    } catch (err) {
+        res.status(50).json({error: err.message})
+    }
+})
+
+app.delete("/users/:id", async (req, res, verifyAdmin) => {
+    try {
+        const {id} = req.params
+        await client.query("DELETE FROM uses WHERE id = $1", [id])
+        res.json({message: "User deleted."})
+    } catch (err) {
+        res.status(500).json({error: err.message})
+    }
+})
