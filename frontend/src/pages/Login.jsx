@@ -4,6 +4,7 @@ import { FcGoogle } from "react-icons/fc";
 import { useState } from "react"
 import TextField from "../components/TextField"
 import Button from "../components/Button"
+import Divider from "../components/Divider"
 
 function Login() {
     const [email, setEmail] = useState('')
@@ -46,7 +47,7 @@ function Login() {
                     />
                 </form>
                 <h5 className='forgot-h5'><a href="/pass-recovery">Forgot password?</a></h5>
-                <div className='divider'><span>or</span></div>
+                <Divider text="or" />
                 <Button
                     className="google"
                     icon="left"

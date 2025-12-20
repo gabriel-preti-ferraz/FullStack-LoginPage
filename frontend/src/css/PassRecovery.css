@@ -32,51 +32,6 @@
     margin: 15px;
 }
 
-form > button {
-    width: 100%;
-    padding: 10px 25px;
-    box-shadow: 0px 12.5px 15px var(--shadow);
-    border: none;
-    border-radius: 6px;
-    text-transform: capitalize;
-    letter-spacing: 1px;
-    font-weight: 550;
-    font-size: 16pt;
-    color: #fff;
-    outline: none;
-    cursor: pointer;
-    transition: 0.7s;
-    background-color: var(--color1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    margin-top: 15px;
-    margin-bottom: 12px;
-}
-
-.divider {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    color: var(--color2);
-    font-size: 12pt;
-    margin: 5px;
-}
-
-.divider::before, .divider::after {
-    content: '';
-    flex: 1;
-    height: 1.2px;
-    background-color: #d1d5db;
-}
-
-.divider span {
-    margin: 0 12px;
-    white-space: nowrap;
-}
-
 #return {
     margin-bottom: 0;
 }

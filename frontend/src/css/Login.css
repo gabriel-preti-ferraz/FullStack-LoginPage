@@ -42,28 +42,6 @@ h5 > a {
     font-weight: 400;
 }
 
-.divider {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    color: var(--color2);
-    font-size: 12pt;
-    margin: 22px;
-}
-
-.divider::before, .divider::after {
-    content: '';
-    flex: 1;
-    height: 1.2px;
-    background-color: #d1d5db;
-}
-
-.divider span {
-    margin: 0 12px;
-    white-space: nowrap;
-}
-
 .google {
     text-transform: capitalize;
     color: var(--color1);
