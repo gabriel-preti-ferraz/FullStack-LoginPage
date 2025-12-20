@@ -1,4 +1,4 @@
-import "../css/TextField.css"
+import "../css/components/TextField.css"
 
 function TextField({type, label, children, ...props}) {
     return (

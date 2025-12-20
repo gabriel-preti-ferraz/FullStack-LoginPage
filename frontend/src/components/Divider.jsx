@@ -1,4 +1,4 @@
-import "../css/Divider.css"
+import "../css/components/Divider.css"
 
 function Divider({ text }) {
     return (

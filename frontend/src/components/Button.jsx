@@ -1,4 +1,4 @@
-import "../css/Button.css"
+import "../css/components/Button.css"
 
 function Button({text, span, icon, ...props}) {
     return (
