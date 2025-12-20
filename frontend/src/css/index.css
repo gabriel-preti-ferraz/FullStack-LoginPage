@@ -17,6 +17,7 @@ body {
     margin: 0;
     font-family: 'Mazzard', sans-serif;
     overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 body * {
