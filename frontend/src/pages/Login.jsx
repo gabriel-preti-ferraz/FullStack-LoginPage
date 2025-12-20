@@ -7,19 +7,29 @@ import Divider from "../components/Divider"
 import Wrapper from "../components/Wrapper"
 import PasswordField from '../components/PasswordField'
 import { useFormState } from '../hooks/useFormState'
-import axios from 'axios'
+import { LoginAPI } from '../services/api'
+import { useState } from "react"
 
 function Login() {
-    const { values, handleChange } = useFormState({
+    const [ error, setError ] = useState("")
+    const { values, handleChange, reset } = useFormState({
         email: '',
         password: '',
     })
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        axios.post('http://localhost:8080/login')
-        .then(res => console.log(res))
-        .catch(err => console.log(err))
+        
+        try {
+            const data = await LoginAPI(values.email, values.password)
+            reset()
+        } catch (err) {
+            if (err.response && err.response.data && err.response.data.message) {
+                setError(err.response.data.message)
+            } else {
+                setError("An unexpected error ocurred. Please try again.")
+            }
+        }
     }
 
     return (
@@ -50,6 +60,8 @@ function Login() {
                     value={values.password}
                     onChange={handleChange}
                 />
+
+                {error && <p  style={{ color: "red", fontSize: "0.9rem", marginTop: "4px", textAlign: "center" }}>{error}</p>}
 
                 <Button
                     type="submit"

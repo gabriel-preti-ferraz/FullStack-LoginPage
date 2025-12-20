@@ -6,7 +6,7 @@ import TextField from "../components/TextField"
 import Button from "../components/Button"
 import PasswordField from "../components/PasswordField"
 import { useFormState } from '../hooks/useFormState'
-import { Register } from "../services/api"
+import { RegisterAPI } from "../services/api"
 
 function SignUp() {
     const { values, handleChange } = useFormState({
@@ -32,7 +32,7 @@ function SignUp() {
         try {
             setError("")
             
-            const data = await Register(values.username, values.email, values.password)
+            const data = await RegisterAPI(values.username, values.email, values.password)
             
             setSuccess("Registration successful!")
             setValues({ username: "", email: "", password: "", confirmPassword: "" })
