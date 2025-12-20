@@ -44,6 +44,7 @@
     align-items: flex-start;
     justify-content: center;
     margin: 15px 0px;
+    position: relative;
 }
 
 .text-field > input {
@@ -51,6 +52,7 @@
     border: none;
     border-radius: 10px;
     padding: 15px;
+    padding-right: 45px;
     box-shadow: 0px 5px 15px var(--shadow);
     background-color: var(--background1);
     margin-bottom: 10px;
@@ -59,6 +61,14 @@
 .text-field > input::placeholder {
     font-weight: 550;
     font-size: 12.5pt;
+}
+
+.eye {
+    position: absolute;
+    right: 15px;
+    cursor: pointer;
+    color: var(--color1);
+    font-size: 14pt;
 }
 
 form > button {

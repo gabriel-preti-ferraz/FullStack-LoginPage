@@ -1,7 +1,11 @@
 import "../css/SignUp.css"
-import { BsArrowRightShort } from "react-icons/bs";
+import { BsArrowRightShort, BsEye, BsEyeSlash } from "react-icons/bs"
+import { useState } from "react"
 
 function SignUp() {
+    const [email, setEmail, user, setUser, password, setPassword] = useState('')
+    const [visible, setVisible] = useState('')
+
     return (
         <div className='signup-wrapper'>
             <div className='signup-card'>
@@ -9,16 +13,22 @@ function SignUp() {
                 <h5>Already have an account? <a href="/login">Sign in</a></h5>
                 <form action="">
                     <div className='text-field'>
-                        <input type="email" name="email" placeholder='E-mail' required/>
+                        <input type="email" name="email" placeholder='E-mail' required value={email} onchange={(e) => setEmail(e.target.value)}/>
                     </div>
                     <div className='text-field'>
-                        <input type="text" name="user" placeholder='User' required/>
+                        <input type="text" name="user" placeholder='User' required value={user} onchange={(e) => setUser(e.target.value)}/>
                     </div>
                     <div className='text-field'>
-                        <input type="password" name="password" placeholder='Password' required/>
+                        <input name="password" placeholder='Password' required value={password} onChange={(e) => setPassword(e.target.value)} type={visible ? "text" : "password"} />
+                        <div className='eye' onClick={() => setVisible(!visible)}>
+                            {visible ? <BsEye /> : <BsEyeSlash />}
+                        </div>
                     </div>
                     <div className='text-field'>
-                        <input type="password" name="password-confirm" placeholder='Confirm Password' required/>
+                        <input name="password-confirm" placeholder='Confirm Password' required value={password} onChange={(e) => setPassword(e.target.value)} type={visible ? "text" : "password"} />
+                        <div className='eye' onClick={() => setVisible(!visible)}>
+                            {visible ? <BsEye /> : <BsEyeSlash />}
+                        </div>
                     </div>
                     <label className="check-field">
                         <input type="checkbox" name="checkbox" required />
@@ -31,5 +41,7 @@ function SignUp() {
         </div>
     )
 }
+
+// TODO: confirm password input
 
 export default SignUp
