@@ -1,24 +1,33 @@
 import "../css/SignUp.css"
-import { BsArrowRightShort, BsEye, BsEyeSlash } from "react-icons/bs"
+import { BsArrowRightShort } from "react-icons/bs"
 import { useState } from "react"
 import Wrapper from "../components/Wrapper"
 import TextField from "../components/TextField"
 import Button from "../components/Button"
+import PasswordField from "../components/PasswordField"
 
 function SignUp() {
-    const [email, setEmail] = useState('')
-    const [user, setUser] = useState('')
-    const [password, setPassword] = useState('')
-    const [passwordConfirm, setPasswordConfirm] = useState('')
-    const [visible, setVisible] = useState(false)
-    const [visibleConfirm, setVisibleConfirm] = useState(false)
+    const [values, setValues] = useState({
+        email: '',
+        user: '',
+        password: '',
+        confirmPassword: '',
+    })
     const [checked, setChecked] = useState(false)
     const [error, setError] = useState('')
+
+    const handleChange = (e) => {
+        const { name, value } = e.target
+        setValues(prev => ({
+            ...prev,
+            [name]: value
+        }))
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        if (password != passwordConfirm) {
+        if (values.password != values.confirmPassword) {
             setError(`The passwords don't match!`)
             return
         }
@@ -43,8 +52,8 @@ function SignUp() {
                     type="email"
                     placeholder="E-mail"
                     required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    value={values.email}
+                    onChange={handleChange}
                 />
 
                 <TextField
@@ -52,34 +61,25 @@ function SignUp() {
                     type="text"
                     placeholder="Username"
                     required
-                    value={user}
-                    onChange={(e) => setUser(e.target.value)}
+                    value={values.user}
+                    onChange={handleChange}
                 />                
 
-                <TextField
+                <PasswordField
                     name="password"
                     placeholder="Password"
                     required
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    type={visible ? "text" : "password"}
-                >
-                    <div className='eye' onClick={() => setVisible(!visible)}>
-                        {visible ? <BsEye /> : <BsEyeSlash />}
-                    </div>
-                </TextField>
-                <TextField
-                    name="confirm-password"
+                    value={values.password}
+                    onChange={handleChange}
+                />
+
+                <PasswordField
+                    name="confirmPassword"
                     placeholder="Confirm your Password"
                     required
-                    value={passwordConfirm}
-                    onChange={(e) => setPasswordConfirm(e.target.value)}
-                    type={visibleConfirm ? "text" : "password"}
-                >
-                    <div className='eye' onClick={() => setVisibleConfirm(!visibleConfirm)}>
-                        {visibleConfirm ? <BsEye /> : <BsEyeSlash />}
-                    </div>
-                </TextField>
+                    values={values.confirmPassword}
+                    onChange={handleChange}
+                />
 
                 <label className="check-field">
                     <input type="checkbox" name="checkbox" onChange={(e) => setChecked(e.target.checked)}/>

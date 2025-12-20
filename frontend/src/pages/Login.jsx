@@ -1,16 +1,26 @@
 import '../css/Login.css'
-import { BsArrowRightShort, BsEye, BsEyeSlash } from "react-icons/bs";
+import { BsArrowRightShort } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import { useState } from "react"
 import TextField from "../components/TextField"
 import Button from "../components/Button"
 import Divider from "../components/Divider"
 import Wrapper from "../components/Wrapper"
+import PasswordField from '../components/PasswordField';
 
 function Login() {
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [visible, setVisible] = useState('')
+    const [values, setValues] = useState({
+        email: '',
+        password: '',
+    })
+
+    const handleChange = (e) => {
+        const { name, value } = e.target
+        setValues(prev => ({
+            ...prev,
+            [name]: value
+        }))
+    }
 
     return (
         <Wrapper 
@@ -25,22 +35,17 @@ function Login() {
                     type="email"
                     placeholder="E-mail"
                     required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    value={values.email}
+                    onChange={handleChange}
                 />
 
-                <TextField
+                <PasswordField
                     name="password"
                     placeholder="Password"
                     required
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    type={visible ? "text" : "password"}
-                >
-                    <div className='eye' onClick={() => setVisible(!visible)}>
-                        {visible ? <BsEye /> : <BsEyeSlash />}
-                    </div>
-                </TextField>
+                    value={values.password}
+                    onChange={handleChange}
+                />
 
                 <Button
                     type="submit"
