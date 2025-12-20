@@ -1,12 +1,14 @@
-import { useState } from "react"
 import "../css/PassRecovery.css"
 import TextField from "../components/TextField"
 import Button from "../components/Button"
 import Divider from "../components/Divider"
 import Wrapper from "../components/Wrapper"
+import { useFormState } from '../hooks/useFormState'
 
 function PassRecovery() {
-    const [email, setEmail] = useState('')
+    const { values, handleChange } = useFormState({
+            email: '',
+    })
 
     return (
         <Wrapper
@@ -19,8 +21,8 @@ function PassRecovery() {
                     name="email"
                     placeholder="E-mail"
                     required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    value={values.email}
+                    onChange={handleChange}
                 />
                 <Button type="submit" text="Continue"/>
             </>}

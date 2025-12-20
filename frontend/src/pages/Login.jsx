@@ -1,26 +1,18 @@
 import '../css/Login.css'
-import { BsArrowRightShort } from "react-icons/bs";
-import { FcGoogle } from "react-icons/fc";
-import { useState } from "react"
+import { BsArrowRightShort } from "react-icons/bs"
+import { FcGoogle } from "react-icons/fc"
 import TextField from "../components/TextField"
 import Button from "../components/Button"
 import Divider from "../components/Divider"
 import Wrapper from "../components/Wrapper"
-import PasswordField from '../components/PasswordField';
+import PasswordField from '../components/PasswordField'
+import { useFormState } from '../hooks/useFormState'
 
 function Login() {
-    const [values, setValues] = useState({
+    const { values, handleChange } = useFormState({
         email: '',
         password: '',
     })
-
-    const handleChange = (e) => {
-        const { name, value } = e.target
-        setValues(prev => ({
-            ...prev,
-            [name]: value
-        }))
-    }
 
     return (
         <Wrapper 
