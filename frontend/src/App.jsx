@@ -5,7 +5,6 @@ import PassRecovery from './pages/PassRecovery'
 import './css/App.css'
 
 function App() {
-
   return (
     <main>
       <Routes> 
