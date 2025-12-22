@@ -36,5 +36,3 @@ function Dashboard() {
 }
 
 export default Dashboard
-
-//TODO: other pages overflow
