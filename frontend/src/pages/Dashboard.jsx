@@ -47,6 +47,7 @@ function Dashboard() {
                         </div>
                         <div className="user-info">
                             <h2>{user.username}</h2>
+                            <p>{user.role}</p>
                             <p>{user.email}</p>
                         </div>
                         <button className="user-button">Edit User</button>
