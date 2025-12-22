@@ -5,12 +5,15 @@ import TextField from "../components/TextField"
 
 function Dashboard() {
     return (
-        <Wrapper>
+        <Wrapper
+            wrapperProps={{ style: {paddingTop: "5%"}}}
+            cardProps={{ style: { width: "70%" } }}
+        >
             <div className="search-container">
                 <TextField
                     type="text"
                     name="search"
-                    placeholder="Search User"
+                    placeholder="Search for a User"
                 >
                     <button className="dash-button" type="submit">Search <span><BsSearch /></span></button>
                 </TextField>
@@ -19,16 +22,20 @@ function Dashboard() {
             <div className="users-field">
                 <div className="user-card">
                     <div className="user-photo">
-                        <img src=""/>
+                        <img src="https://avatars.githubusercontent.com/u/125829214?v=4"/>
                     </div>
                     <div className="user-info">
                         <h2>Username</h2>
-                        <p>email</p>
+                        <p>email@email.com</p>
                     </div>
+                    <button className="user-button">Edit User</button>
                 </div>
+
             </div>
         </Wrapper>
     )
 }
 
 export default Dashboard
+
+//TODO: other pages overflow

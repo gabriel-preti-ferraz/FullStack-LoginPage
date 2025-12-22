@@ -5,7 +5,7 @@
 }
 
 :root {
-    --gradient: linear-gradient(90deg,#bed3dc 0%,#cad9d4 100%);
+    --gradient: linear-gradient(90deg, #bed3dc 0%, #cad9d4 20%);
     --color1: #414141;
     --color2: #9ca3af;
     --shadow: rgba(0, 0, 0, 0.1);
@@ -17,7 +17,6 @@ body {
     margin: 0;
     font-family: 'Mazzard', sans-serif;
     overflow-x: hidden;
-    overflow-y: hidden;
 }
 
 body * {
