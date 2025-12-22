@@ -89,9 +89,11 @@ function verifyAdmin(req, res, next) {
     }
 }
 
+//TODO: verifyAdmin
+
 app.get("/users", async (req, res, verifyAdmin) => {
     try {
-        const result = await client.query("SELECT id, name, email, role FROM users")
+        const result = await client.query("SELECT id, username, email, role FROM users")
         res.json(result.rows)
     } catch (err) {
         res.status(500).json({error: err.message})
@@ -101,7 +103,7 @@ app.get("/users", async (req, res, verifyAdmin) => {
 app.get("/users/:id", async (req, res, verifyAdmin) => {
     try {
         const {id} = req.params
-        const result = await client.query("SELECT id, name, email, role FROM users where id =$1", [id])
+        const result = await client.query("SELECT id, usename, email, role FROM users where id =$1", [id])
         res.json(result.rows[0])
     } catch (err) {
         res.status(500).json({error: err.message})
@@ -111,8 +113,8 @@ app.get("/users/:id", async (req, res, verifyAdmin) => {
 app.put("/users/:id", async (req, res, verifyAdmin) => {
     try {
         const {id} = req.params
-        const {name, email, role} = req.body
-        const result = await client.query("UPDATE users SET name = $1, email = $2, role = $3 WHERE id = $4 RETURNING id, name, email, role", [name, email, role, id])
+        const {username, email, role} = req.body
+        const result = await client.query("UPDATE users SET username = $1, email = $2, role = $3 WHERE id = $4 RETURNING id, name, email, role", [username, email, role, id])
         res.json(result.rows[0])
     } catch (err) {
         res.status(50).json({error: err.message})

@@ -13,3 +13,8 @@ export async function LoginAPI(email, password) {
     const response = await api.post('/login', {email, password})
     return response.data
 }
+
+export async function UserListAPI() {
+    const response = await api.get("/users")
+    return response.data
+}
