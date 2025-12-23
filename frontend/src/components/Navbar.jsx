@@ -6,10 +6,9 @@ function Navbar() {
 
     function handleLogout() {
         localStorage.removeItem("token")
+        alert("You've logged out!")
         navigate("/login")
     }
-
-    // TODO: dashboard route protect
 
     return (
         <div className="nav-wrapper">
