@@ -31,3 +31,8 @@ export async function UserEditAPI(id, username, email, role) {
     const response = await api.put(`/users/${id}`, {username, email, role})
     return response.data
 }
+
+export async function UserDeleteAPI(id) {
+    const response = await api.delete(`/users/${id}`)
+    return response.data
+}

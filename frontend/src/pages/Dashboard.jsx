@@ -2,7 +2,7 @@ import "../css/Dashboard.css"
 import Wrapper from "../components/Wrapper"
 import { BsSearch } from "react-icons/bs"
 import TextField from "../components/TextField"
-import { UserListAPI, UserEditAPI } from "../services/api"
+import { UserListAPI, UserEditAPI, UserDeleteAPI } from "../services/api"
 import { useState, useEffect } from "react"
 
 function Dashboard() {
@@ -44,7 +44,7 @@ function Dashboard() {
 
     const handleSave = async () => {
         try {
-            const updateUser = await UserEditAPI(
+            await UserEditAPI(
                 selectedUser.id,
                 selectedUser.username,
                 selectedUser.email,
@@ -55,6 +55,20 @@ function Dashboard() {
         } catch (err) {
             console.log(err)
             alert("The user could not be saved.")
+        }
+    }
+
+    const handleDelete = async (userId) => {
+        const confirmDelete = window.confirm("Are you sure you want to delete this user?")
+        if (confirmDelete) {
+            try {
+                await UserDeleteAPI(userId)
+                window.location.reload()
+                alert("User deleted!")
+            } catch (err) {
+                console.log(er)
+                alert("An erro occured while deleting the user.")
+            }
         }
     }
 
@@ -83,7 +97,7 @@ function Dashboard() {
                             <p>{user.email}</p>
                         </div>
                         <button className="user-button" onClick={() => openModal(user)}>Edit User</button>
-                        
+                        <button className="user-button" style={{ fontSize: "14pt" }} onClick={() => handleDelete(user.id)}>Delete User</button>
                     </div>
                 ))}
 

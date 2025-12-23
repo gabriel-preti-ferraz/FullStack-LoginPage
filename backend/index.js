@@ -90,7 +90,7 @@ app.put("/users/:id", verifyAdmin, async (req, res) => {
 app.delete("/users/:id", verifyAdmin, async (req, res) => {
     try {
         const {id} = req.params
-        await client.query("DELETE FROM uses WHERE id = $1", [id])
+        await client.query("DELETE FROM users WHERE id = $1", [id])
         res.json({message: "User deleted."})
     } catch (err) {
         res.status(500).json({error: err.message})
