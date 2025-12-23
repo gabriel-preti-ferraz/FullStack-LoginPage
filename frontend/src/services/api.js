@@ -26,3 +26,8 @@ export async function UserListAPI() {
     const response = await api.get("/users")
     return response.data
 }
+
+export async function UserEditAPI(id, username, email, role) {
+    const response = await api.put(`/users/${id}`, {username, email, role})
+    return response.data
+}

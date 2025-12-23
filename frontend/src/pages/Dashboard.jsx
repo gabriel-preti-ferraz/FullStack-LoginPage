@@ -2,12 +2,14 @@ import "../css/Dashboard.css"
 import Wrapper from "../components/Wrapper"
 import { BsSearch } from "react-icons/bs"
 import TextField from "../components/TextField"
-import { UserListAPI } from "../services/api"
+import { UserListAPI, UserEditAPI } from "../services/api"
 import { useState, useEffect } from "react"
 
 function Dashboard() {
     const [error, setError] = useState(null)
     const [users, setUsers] = useState([])
+    const [selectedUser, setSelectedUser] = useState(null)
+    const [isModalOpen, setIsModalOpen] = useState(false)
 
     //TODO: overflow respnsive
 
@@ -24,6 +26,37 @@ function Dashboard() {
     
         loadUsers()
     }, [])
+
+    const openModal = (user) => {
+        setSelectedUser(user)
+        setIsModalOpen(true)
+    }
+
+    const closeModal = () => {
+        setSelectedUser(null)
+        setIsModalOpen(false)
+    }
+
+    const handleChange = (e) => {
+        const {name, value} = e.target
+        setSelectedUser((prev) => ({...prev, [name]: value}))
+    }
+
+    const handleSave = async () => {
+        try {
+            const updateUser = await UserEditAPI(
+                selectedUser.id,
+                selectedUser.username,
+                selectedUser.email,
+                selectedUser.role
+            )
+            window.location.reload()
+            alert("User modified!")
+        } catch (err) {
+            console.log(err)
+            alert("The user could not be saved.")
+        }
+    }
 
     return (
         <Wrapper
@@ -49,9 +82,32 @@ function Dashboard() {
                             <p style={{textTransform: "capitalize"}}>{user.role}</p>
                             <p>{user.email}</p>
                         </div>
-                        <button className="user-button">Edit User</button>
+                        <button className="user-button" onClick={() => openModal(user)}>Edit User</button>
+                        
                     </div>
                 ))}
+
+                {isModalOpen && selectedUser && (
+                    <div className="modal-overlay">
+                        <div className="modal">
+                            <h2>Edit User</h2>
+                            <label>Username:</label>
+                            <input type="text" name="username" value={selectedUser.username} onChange={handleChange} />
+                            <label>E-mail:</label>
+                            <input type="email" name="email" value={selectedUser.email} onChange={handleChange}/>
+                            <label>Role:</label>
+                            <select name="role" value={selectedUser.role} onChange={handleChange}>
+                                <option value="user">User</option>
+                                <option value="admin">Admin</option>
+                            </select>
+
+                            <div className="modal-buttons">
+                                <button onClick={handleSave}>Save Changes</button>
+                                <button onClick={closeModal}>Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                )}
             </div>
         </Wrapper>
     )

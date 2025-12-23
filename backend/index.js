@@ -80,10 +80,10 @@ app.put("/users/:id", verifyAdmin, async (req, res) => {
     try {
         const {id} = req.params
         const {username, email, role} = req.body
-        const result = await client.query("UPDATE users SET username = $1, email = $2, role = $3 WHERE id = $4 RETURNING id, name, email, role", [username, email, role, id])
+        const result = await client.query("UPDATE users SET username = $1, email = $2, role = $3 WHERE id = $4 RETURNING id, username, email, role", [username, email, role, id])
         res.json(result.rows[0])
     } catch (err) {
-        res.status(50).json({error: err.message})
+        res.status(500).json({error: err.message})
     }
 })
 
