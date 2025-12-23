@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
+import PrivateRoute from "./components/PrivateRoute"
 import Login from './pages/Login'
 import SignUp from './pages/SignUp'
 import PassRecovery from './pages/PassRecovery'
@@ -14,7 +15,7 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<SignUp />} />
           <Route path='/pass-recovery' element={<PassRecovery />} />
-          <Route path='/dashboard' element={<Dashboard />} />
+          <Route path='/dashboard' element={<PrivateRoute><Dashboard /></PrivateRoute>} />
         </Routes>
       </main>
     </>
