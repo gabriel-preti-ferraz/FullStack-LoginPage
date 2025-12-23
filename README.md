@@ -5,11 +5,7 @@
 ![Bitbucket open issues](https://img.shields.io/bitbucket/issues/gabriel-preti-ferraz/UserManagementSystem?style=for-the-badge)
 ![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/gabriel-preti-ferraz/UserManagementSystem?style=for-the-badge)
 
-<video width="600" controls>
-  <source src="./UserManagementSystem.mp4" type="video/mp4">
-  Your browser does not support video
-</video>
-
+https://github.com/user-attachments/assets/b786870a-82b4-4f52-84ed-47cd64cf51e6
 
 > Fullstack user management project built with React and Express. Features login, registration, and password recovery panels, as well as an admin dashboard to manage users, allowing editing of username, email, and role, with the ability to switch between user and admin.
 
