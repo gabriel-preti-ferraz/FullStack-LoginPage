@@ -7,10 +7,10 @@ import TextField from "../components/TextField"
 import Button from "../components/Button"
 import PasswordField from "../components/PasswordField"
 import { useFormState } from '../hooks/useFormState'
-import { RegisterAPI } from "../services/api"
+import { RegisterAPI, LoginAPI } from "../services/api"
 
 function SignUp() {
-    const { values, handleChange, reset } = useFormState({
+    const { values, handleChange } = useFormState({
             email: '',
             password: '',
             username: ''
@@ -31,9 +31,10 @@ function SignUp() {
         }
 
         try {
-            const data = await RegisterAPI(values.username, values.email, values.password)
-            setError("")
-            reset()
+            await RegisterAPI(values.username, values.email, values.password)
+            const loginData = await LoginAPI(values.email, values.password)
+            localStorage.setItem("token", loginData.token())
+            navigate("/dashboard")
         } catch (error) {
             if (error.response && error.response.data && error.response.data.message) {
                 setError(error.response.data.message)
