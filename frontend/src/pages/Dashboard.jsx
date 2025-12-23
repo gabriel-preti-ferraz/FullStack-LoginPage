@@ -97,7 +97,7 @@ function Dashboard() {
                             <p>{user.email}</p>
                         </div>
                         <button className="user-button" onClick={() => openModal(user)}>Edit User</button>
-                        <button className="user-button" style={{ fontSize: "14pt" }} onClick={() => handleDelete(user.id)}>Delete User</button>
+                        <button className="user-button" style={{ fontSize: "13pt" }} onClick={() => handleDelete(user.id)}>Delete User</button>
                     </div>
                 ))}
 

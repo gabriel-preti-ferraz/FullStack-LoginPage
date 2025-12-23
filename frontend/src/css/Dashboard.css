@@ -1,5 +1,8 @@
 #dash-wrapper {
+    padding-bottom: 5%;
     padding-top: 2%;
+    overflow-y: auto;
+    height: 100vh;
 }
 
 #dash-card {
@@ -28,13 +31,17 @@
     box-shadow: 0 0 10px var(--shadow);
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     padding: 40px 40px;
     border-radius: 20px;
     width: 20%;
     margin: 20px;
     text-align: center;
+}
+
+.user-info {
+    word-break: break-all;
 }
 
 .user-info > p, .user-info > h2 {
@@ -103,6 +110,10 @@
     #dash-card {
         width: 90%;
     }
+
+    #dash-wrapper {
+        padding-bottom: 12%;
+    }
 }
 
 @media only screen and (max-width: 600px) {
@@ -119,6 +130,7 @@
     }
 
     #dash-wrapper {
-        padding-top: 40px;
+        padding-top: 5%;
+        padding-bottom: 35%;
     }
 }
